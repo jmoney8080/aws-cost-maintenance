@@ -1,23 +1,20 @@
 version: 2
 
 jobs:
-    deploy:
+    build:
         docker:
             - image: circleci/golang:1.14
-        working_directory: ~/til
+        working_directory: /go/src/github.com/jmoney8080/aws-cost-maintenance
         steps:
             - checkout
             - run: 
-                name: Download ansible
-                command: sudo apt-get install -y ansible
-            - run:
-                name: Generate README
-                command: ansible-playbook playbook.yml
+                name: build
+                command: make build
 workflows:
     version: 2
     commit-workflow:
         jobs:
-            - deploy:
+            - build:
                 filters:
                     branches:
                         only: master
