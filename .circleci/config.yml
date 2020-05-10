@@ -1,0 +1,23 @@
+version: 2
+
+jobs:
+    deploy:
+        docker:
+            - image: circleci/golang:1.14
+        working_directory: ~/til
+        steps:
+            - checkout
+            - run: 
+                name: Download ansible
+                command: sudo apt-get install -y ansible
+            - run:
+                name: Generate README
+                command: ansible-playbook playbook.yml
+workflows:
+    version: 2
+    commit-workflow:
+        jobs:
+            - deploy:
+                filters:
+                    branches:
+                        only: master
