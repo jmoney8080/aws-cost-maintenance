@@ -4,6 +4,8 @@ import (
 	"flag"
 	"log"
 	"os"
+
+	"github.com/jmoney8080/aws-cost-maintenance/cost"
 )
 
 var (
@@ -39,6 +41,8 @@ func main() {
 	flag.Parse()
 
 	switch policy {
+	case "Ec2Modernization":
+		cost.Ec2Modernization()
 	default:
 		flag.PrintDefaults()
 	}
