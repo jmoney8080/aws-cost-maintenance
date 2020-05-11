@@ -23,6 +23,10 @@ release:
   # Defaults to false.
   disable: false
 
+  extra_files:
+    - glob: ./build/aws-cost-maintenance_linus-amd64
+    - glob: ./build/aws-cost-maintenance_darwin-amd64
+
 changelog:
   sort: asc
   filters:
