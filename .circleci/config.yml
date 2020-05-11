@@ -10,11 +10,41 @@ jobs:
             - run: 
                 name: build
                 command: make build
+    release:
+        docker:
+            - image: circleci/golang:1.14
+        working_directory: /go/src/github.com/jmoney8080/go-gadget-slack
+        steps:
+            - checkout
+            - run:
+                name: Install tools
+                command: go get github.com/goreleaser/goreleaser
+            - run:
+                name: Run goreleaser
+                command: goreleaser
 workflows:
     version: 2
-    commit-workflow:
+    build-workflow:
         jobs:
             - build:
                 filters:
                     branches:
-                        only: master
+                        only: /.*/
+                    tags:
+                        ignore: /.*/
+    release-workflow:
+        jobs:
+          - build:
+              filters:
+                  branches:
+                    ignore: /.*/
+                  tags:
+                    only: /v(0|(?:[1-9]\d*))(?:\.(0|(?:[1-9]\d*))(?:\.(0|(?:[1-9]\d*)))?(?:\-([\w][\w\.\-_]*))?)?/
+          - release:
+                requires:
+                    - build
+                filters:
+                    branches:
+                        ignore: /.*/
+                    tags:
+                        only: /v(0|(?:[1-9]\d*))(?:\.(0|(?:[1-9]\d*))(?:\.(0|(?:[1-9]\d*)))?(?:\-([\w][\w\.\-_]*))?)?/
