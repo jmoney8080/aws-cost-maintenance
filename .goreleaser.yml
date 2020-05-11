@@ -24,7 +24,7 @@ release:
   disable: true
 
   extra_files:
-    - glob: ./build/*
+    - glob: ./build/**
 
 changelog:
   sort: asc
