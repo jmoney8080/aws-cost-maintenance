@@ -23,6 +23,9 @@ release:
   # Defaults to false.
   disable: true
 
+  extra_files:
+    - glob: ./build/*
+
 changelog:
   sort: asc
   filters:
