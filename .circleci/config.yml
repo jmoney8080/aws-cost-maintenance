@@ -13,7 +13,7 @@ jobs:
     release:
         docker:
             - image: circleci/golang:1.14
-        working_directory: /go/src/github.com/jmoney8080/go-gadget-slack
+        working_directory: /go/src/github.com/jmoney8080/aws-cost-maintenance
         steps:
             - checkout
             - run:
