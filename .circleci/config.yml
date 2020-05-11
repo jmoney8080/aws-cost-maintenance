@@ -24,15 +24,15 @@ jobs:
                 command: goreleaser
 workflows:
     version: 2
-    commit-workflow:
+    build-workflow:
         jobs:
             - build:
                 filters:
                     branches:
                         only: /.*/
-                tags:
-                    ignore: /^[0-9]+(\.[0-9]+)*/
-    build-and-release:
+                    tags:
+                        ignore: /^[0-9]+(\.[0-9]+)*/
+    release-workflow:
         jobs:
           - build:
               filters:
