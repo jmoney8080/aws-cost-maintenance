@@ -31,7 +31,7 @@ workflows:
                     branches:
                         only: /.*/
                     tags:
-                        ignore: /^[0-9]+(\.[0-9]+)*/
+                        ignore: /.*/
     release-workflow:
         jobs:
           - build:
@@ -39,7 +39,7 @@ workflows:
                   branches:
                     ignore: /.*/
                   tags:
-                    only: /^[0-9]+(\.[0-9]+)*/
+                    only: /v(0|(?:[1-9]\d*))(?:\.(0|(?:[1-9]\d*))(?:\.(0|(?:[1-9]\d*)))?(?:\-([\w][\w\.\-_]*))?)?/
           - release:
                 requires:
                     - build
@@ -47,4 +47,4 @@ workflows:
                     branches:
                         ignore: /.*/
                     tags:
-                        only: /^[0-9]+(\.[0-9]+)*/
+                        only: /v(0|(?:[1-9]\d*))(?:\.(0|(?:[1-9]\d*))(?:\.(0|(?:[1-9]\d*)))?(?:\-([\w][\w\.\-_]*))?)?/
