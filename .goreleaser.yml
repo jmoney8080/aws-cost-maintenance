@@ -24,7 +24,7 @@ release:
   disable: false
 
   extra_files:
-    - glob: ./build/aws-cost-maintenance_linus-amd64
+    - glob: ./build/aws-cost-maintenance_linux-amd64
     - glob: ./build/aws-cost-maintenance_darwin-amd64
 
 changelog:
