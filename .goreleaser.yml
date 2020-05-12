@@ -36,3 +36,13 @@ changelog:
     exclude:
     - '^docs:'
     - '^test:'
+
+brews:
+  - github:
+      owner: jmoney8080
+      name: homebrew-aws
+    folder: Formula
+    homepage:  https://www.jmoney8080.dev
+    description: Collection of scripts that analyze easily correctable items to save money in AWS.
+    test: |
+      system "#{bin}/aws-cost-maintenance -h"
