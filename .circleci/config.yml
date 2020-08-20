@@ -3,8 +3,8 @@ version: 2
 jobs:
     build:
         docker:
-            - image: circleci/golang:1.14
-        working_directory: /go/src/github.com/jmoney8080/aws-cost-maintenance
+            - image: circleci/golang:1.15
+        working_directory: /go/src/github.com/jmoney/aws-cost-maintenance
         steps:
             - checkout
             - run: 
@@ -12,13 +12,13 @@ jobs:
                 command: make build
     release:
         docker:
-            - image: circleci/golang:1.14
-        working_directory: /go/src/github.com/jmoney8080/aws-cost-maintenance
+            - image: circleci/golang:1.15
+        working_directory: /go/src/github.com/jmoney/aws-cost-maintenance
         steps:
             - checkout
             - run:
                 name: Install tools
-                command: go get github.com/goreleaser/goreleaser
+                command: curl -sL https://git.io/goreleaser | bash
             - run:
                 name: Run goreleaser
                 command: goreleaser
