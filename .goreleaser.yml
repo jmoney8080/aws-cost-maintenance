@@ -10,7 +10,7 @@ release:
   # Repo in which the release will be created.
   # Default is extracted from the origin remote URL.
   github:
-    owner: jmoney8080
+    owner: jmoney
     name: aws-cost-maintenance
 
   # If set to true, will not auto-publish the release.
@@ -39,10 +39,10 @@ changelog:
 
 brews:
   - github:
-      owner: jmoney8080
+      owner: jmoney
       name: homebrew-aws
     folder: Formula
-    homepage:  https://www.jmoney8080.dev
+    homepage:  https://www.jmoney.dev
     description: Collection of scripts that analyze easily correctable items to save money in AWS.
     test: |
       system "#{bin}/aws-cost-maintenance -h"
